@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0 auto;
+    min-width: 900px;
+}
+a{
+    text-decoration-line:none ;
+    color: black;
+}
+.menu>a,
+.myinfo>a{
+	margin-left: 20px;
+	font-size: 20px;
+}
+ul{
+    list-style-type: none;
+}
+.navbar{
+    height: 90px;
+    /* magin/padding : 1개 (사면적용) , 2개(세로/가로), 3개(위/오른쪽(가로방향)/아래), 4개(4면) */
+    padding: 0px 30px;
+    background-color: white;
+    
+    display: flex;
+/*     justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar>a{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    font-weight: 700;
+}
+.navbar>ul{
+    float: right;
+}
+.navbar>ul>li{
+    display: inline;
+    margin-left: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.navbar>ul>li>a{
+    font-size: 13px;
+    font-weight: 700;
+    color: black;
+}
+.fa-mug-hot{
+	padding:8px;
+	font-size:65px;
+	color:rgba(102, 12, 12, 0.938);
+	
+}
+.header{
+    width: 100%;
+    height: 400px;
+    background-image: url("https://cdn.pixabay.com/photo/2015/09/01/21/00/coffee-beans-917613_960_720.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.footer{
+    clear: both;
+    text-align: center;
+    margin: 120px auto 80px;
+    
+    height: 200px;
+    background-color: gray;
+}
+.footer i{
+	margin-top:15px;
+	margin-left:20px;
+    font-size: 20px;
+}
+

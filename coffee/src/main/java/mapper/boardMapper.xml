@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<insert id="insert" parameterType="bvo">
+		insert into coffee_board (bNum,bno,title,writer,content,regdate,read_count,image_file)
+		values(bNum+2, #{bno},#{title},#{writer},#{content},now(),#{read_count},#{image_file})
+	</insert>
+	<select id="list" resultType="bvo">
+		select bno,title,writer,regdate,read_count from coffee_board 
+		order by writer='관리자' desc, bno desc
+	</select>
+	<select id="detail" parameterType="int" resultType="bvo">
+		select bno, title, writer, content, regdate, image_file from coffee_board
+		where bno=#{bno}
+	</select>
+	<update id="update" parameterType="bvo">
+		update coffee_board set title=#{title}, regdate=now(), content=#{content}, image_file=#{image_file}
+		where bno=#{bno}
+	</update>
+	<update id="read_countUp" parameterType="int">
+	 	update coffee_board set read_count=read_count+1 where bno=#{bno}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from coffee_board where bno=#{bno}
+	</delete>
+	<select id="cnt" resultType="int">
+		select count(bno) from coffee_board;
+	</select>
+	<select id="pagingList" parameterType="pvo" resultType="bvo">
+		select bno, title, writer, regdate, read_count from coffee_board order by writer='관리자' desc, bno desc 
+		limit #{pageStart}, #{qty}
+	</select>
+	<select id="hide" parameterType="int" resultType="bvo">
+		select bno, title, writer, regdate,read_count from coffee_board
+		where bno!=#{bno} order by bno desc
+	</select>
+	<delete id="deletdAll" parameterType="String">
+		delete from coffee_board where writer=#{writer}
+	</delete>
+</mapper>

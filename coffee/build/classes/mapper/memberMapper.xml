@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<insert id="insert" parameterType="mvo">
+	insert into coffee_member (id, password, name, brith_date, gender, email, mobile) values
+	(#{id},#{password},#{name},#{brith_date},#{gender},#{email},#{mobile})
+</insert>
+<select id="login" parameterType="mvo" resultType="mvo">
+	select * from coffee_member where id=#{id} and password=#{password}
+</select>
+<update id="update" parameterType="String">
+	update coffee_member set password=#{password}, name=#{name}, brith_date=#{brith_date},
+	gender=#{gender}, email=#{email}, mobile=#{mobile} where id=#{id} 
+</update>
+<delete id="delete" parameterType="mvo">
+	delete from coffee_member where id=#{id}
+</delete>
+<select id="list" resultType="mvo">
+	select id, password, name, brith_date, gender, email, mobile from coffee_member where id !='관리자';
+</select>
+</mapper>
